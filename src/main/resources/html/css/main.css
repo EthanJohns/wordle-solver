@@ -1,0 +1,111 @@
+body {
+    box-sizing: border-box;
+    margin: 20px;
+    font-family: sans-serif;
+    background-color: #f2f2f2;
+}
+
+#welcome{
+    text-align: center;
+    width: 34%;
+    padding: 10px;
+    min-width: 380px;
+}
+
+form {
+    padding: 20px;
+    width: 33%;
+    border-radius: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit], input[type=button]{
+    background-color: #3ca9b6;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover, input[type=button]:hover {
+    background-color: #3596a2;
+}
+
+input[type=submit] {
+    width: 100%;
+}
+
+input[type=button] {
+    width: 20%;
+    min-width: 180px;
+}
+
+nav {
+    display:block;
+}
+
+table {
+    table-layout: fixed;
+    width: 50%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    min-width: 400px;
+}
+
+table thead tr {
+    background-color: #47939b;
+    color: #ffffff;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px 15px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #dcdcdc;
+}
+
+tfoot tr {
+    border-top: 2px solid #3c7e98;
+}
+
+/*Currency and currency headers*/
+th.money, td.money, td.total, thead th:nth-child(4) {
+    text-align: right;
+}
+
+td.total {
+    font-size: larger;
+    font-weight: bold;
+}
+
+#expenses{
+    margin-top: 15px;
+}
+
+section.nettExpenses {
+    border-top: 3px solid #38819f;
+    padding: 20px 0px 20px 0px;
+    width: 50%;
+    text-align: right;
+    font-size: x-large;
+    font-weight: bold;
+}

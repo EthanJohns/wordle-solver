@@ -1,0 +1,37 @@
+image: markhobson/maven-chrome:jdk-11
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - test
+  - package
+
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  script:
+    - mvn clean
+    - mvn initialize
+    - echo "Compiling the code..."
+    - mvn compile -DskipTests
+    - mvn verify -DskipTests
+    - echo "Compile complete."
+
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  before_script:
+    - apt update -y; apt upgrade -y 
+    # - apt-get install libgtk2.0-0:i386 libsm6:i386
+  script:
+    - echo "Running unit tests... "
+    - mvn test
+    - echo "Make sure all tests pass"
+
+package-job:      # This job runs in the deploy stage.
+  stage: package  # It only runs when *both* jobs in the test stage complete successfully.
+  script:
+    - echo "Package application for deployment..."
+    - mvn clean
+    - mvn initialize
+    - mvn compile -DskipTests
+    - mvn verify -DskipTests
+    - mvn package -DskipTests
+    - echo "Application successfully packaged."
