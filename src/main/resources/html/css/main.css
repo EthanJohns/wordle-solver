@@ -1,111 +1,87 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    box-sizing: border-box;
-    margin: 20px;
-    font-family: sans-serif;
-    background-color: #f2f2f2;
+    display: flex;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    flex-direction: column;
 }
 
-#welcome{
-    text-align: center;
-    width: 34%;
-    padding: 10px;
-    min-width: 380px;
+main {
+    display: flex;
+    flex: 1 0 auto;
+    background-color: #e3e3e3;
+    justify-content: center;
+    align-items: center;
 }
 
-form {
-    padding: 20px;
-    width: 33%;
-    border-radius: 10px;
+.grid {
+    display: flex;
+    flex-direction: column;
 }
 
-input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.row {
+    display: flex;
+    flex-direction: row;
 }
 
-input[type=submit], input[type=button]{
-    background-color: #3ca9b6;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
+.cell {
+    height: 4em;
+    width: 4em;
+    background-color: #555555;
+    margin: 0.35em;
     cursor: pointer;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
 }
 
-input[type=submit]:hover, input[type=button]:hover {
-    background-color: #3596a2;
+.cancel {
+    font-size: 3em !important;
+    margin-left: 0.5em !important;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
 }
 
-input[type=submit] {
-    width: 100%;
+.select_row {
+    font-size: 3em !important;
+    margin-right: 0.5em !important;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
 }
 
-input[type=button] {
-    width: 20%;
-    min-width: 180px;
+.word_list {
+    padding: 1em 2em;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    max-height: 50vh;
+    border-radius: 3px;
+    width: 7em;
+    display: flex;
+    margin-left: 4em;
 }
 
-nav {
-    display:block;
+#possible_answers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-table {
-    table-layout: fixed;
-    width: 50%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    min-width: 400px;
-}
+/*.hidden{*/
+/*    display: none;*/
+/*}*/
 
-table thead tr {
-    background-color: #47939b;
-    color: #ffffff;
-    text-align: left;
-}
-
-th, td {
-    padding: 10px 15px;
-}
-
-tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-tbody tr:nth-of-type(even) {
-    background-color: #dcdcdc;
-}
-
-tfoot tr {
-    border-top: 2px solid #3c7e98;
-}
-
-/*Currency and currency headers*/
-th.money, td.money, td.total, thead th:nth-child(4) {
-    text-align: right;
-}
-
-td.total {
-    font-size: larger;
-    font-weight: bold;
-}
-
-#expenses{
-    margin-top: 15px;
-}
-
-section.nettExpenses {
-    border-top: 3px solid #38819f;
-    padding: 20px 0px 20px 0px;
-    width: 50%;
-    text-align: right;
-    font-size: x-large;
-    font-weight: bold;
-}
+/*.visible {*/
+/*    display: flex !important;*/
+/*}*/

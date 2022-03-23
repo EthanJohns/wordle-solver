@@ -13,7 +13,7 @@ import org.example.home.HomeController;
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class WordleSolverServer {
-    private static final int DEFAULT_PORT = 7070;
+    private static final int DEFAULT_PORT = 7080;
     private static final String STATIC_DIR = "/html";
 
     /**
@@ -68,4 +68,5 @@ public class WordleSolverServer {
             config.sessionHandler(Sessions::nopersistSessionHandler);
         });
     }
+
 }

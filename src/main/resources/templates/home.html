@@ -5,13 +5,81 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/home.js"></script>
 </head>
 
 <body>
-<h1>Welcome to Wordle Solver!</h1>
+<nav>
+    <h1>Wordle Solver</h1>
+</nav>
+<main>
+    <div class="grid">
+        <div class="row" id="row_0">
+            <i class="material-icons select_row" id="select_row_0">chevron_right</i>
+            <div class="cell" id="cell_0_0"></div>
+            <div class="cell" id="cell_0_1"></div>
+            <div class="cell" id="cell_0_2"></div>
+            <div class="cell" id="cell_0_3"></div>
+            <div class="cell" id="cell_0_4"></div>
+            <i class="material-icons cancel" id="cancel_0">cancel</i>
+        </div>
+        <div class="row" id="row_1">
+            <i class="material-icons select_row" id="select_row_1">chevron_right</i>
+            <div class="cell" id="cell_1_0"></div>
+            <div class="cell" id="cell_1_1"></div>
+            <div class="cell" id="cell_1_2"></div>
+            <div class="cell" id="cell_1_3"></div>
+            <div class="cell" id="cell_1_4"></div>
+            <i class="material-icons cancel" id="cancel_1">cancel</i>
 
+        </div>
+        <div class="row" id="row_2">
+            <i class="material-icons select_row" id="select_row_2">chevron_right</i>
+            <div class="cell" id="cell_2_0"></div>
+            <div class="cell" id="cell_2_1"></div>
+            <div class="cell" id="cell_2_2"></div>
+            <div class="cell" id="cell_2_3"></div>
+            <div class="cell" id="cell_2_4"></div>
+            <i class="material-icons cancel" id="cancel_2">cancel</i>
+        </div>
+        <div class="row" id="row_3">
+            <i class="material-icons select_row" id="select_row_3">chevron_right</i>
+            <div class="cell" id="cell_3_0"></div>
+            <div class="cell" id="cell_3_1"></div>
+            <div class="cell" id="cell_3_2"></div>
+            <div class="cell" id="cell_3_3"></div>
+            <div class="cell" id="cell_3_4"></div>
+            <i class="material-icons cancel" id="cancel_3">cancel</i>
+        </div>
+        <div class="row" id="row_4">
+            <i class="material-icons select_row" id="select_row_4">chevron_right</i>
+            <div class="cell" id="cell_4_0"></div>
+            <div class="cell" id="cell_4_1"></div>
+            <div class="cell" id="cell_4_2"></div>
+            <div class="cell" id="cell_4_3"></div>
+            <div class="cell" id="cell_4_4"></div>
+            <i class="material-icons cancel" id="cancel_4">cancel</i>
+        </div>
+        <div class="row" id="row_5">
+            <i class="material-icons select_row" id="select_row_5">chevron_right</i>
+            <div class="cell" id="cell_5_0"></div>
+            <div class="cell" id="cell_5_1"></div>
+            <div class="cell" id="cell_5_2"></div>
+            <div class="cell" id="cell_5_3"></div>
+            <div class="cell" id="cell_5_4"></div>
+            <i class="material-icons cancel" id="cancel_5">cancel</i>
+        </div>
+    </div>
+    <div class="word_list hidden">
+        <h2>Possible Answers<span id="possible_answers_num"></span></h2>
+        <ul id="possible_answers">
+
+        </ul>
+    </div>
+</main>
 </body>
 
 </html>
