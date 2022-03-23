@@ -4,6 +4,16 @@ html, body {
     padding: 0;
 }
 
+nav {
+    height: 4em;
+    background-color: #555;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em;
+}
+
 body {
     display: flex;
     font-family: "Helvetica Neue", Arial, sans-serif;
