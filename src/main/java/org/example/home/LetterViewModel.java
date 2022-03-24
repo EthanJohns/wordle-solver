@@ -10,7 +10,17 @@ public class LetterViewModel {
     public LetterViewModel(String letter, int index, String colour) {
         this.letter = letter;
         this.index = index;
-        this.colour = colour;
+        this.colour = simpleColour(colour);
+    }
+
+    private String simpleColour(String colour){
+        if (colour.equals("rgb(85, 85, 85)")){
+            return "grey";
+        }
+        if (colour.equals("rgb(106, 170, 100)")){
+            return "green";
+        }
+        return "yellow";
     }
 
     public String getLetter() {
