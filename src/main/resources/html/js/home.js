@@ -51,24 +51,56 @@ window.onload = () => {
     console.log("entered guess: ", current_guess.join('').toUpperCase());
     current_guess.forEach((letter, index) => {
       if (getCellHex(document.getElementById('cell_' + current_row + '_' + index)) === '#555555') {
-        wordle_bank = wordle_bank.filter(word => !word.includes(letter))
+        original_words = original_words.filter(word => !word.includes(letter))
       }
       if (getCellHex(document.getElementById('cell_' + current_row + '_' + index)) === '#6aaa64') {
-        wordle_bank = wordle_bank.filter(word => word.split('')[index] === letter)
+        original_words = original_words.filter(word => word.split('')[index] === letter)
       }
       if (getCellHex(document.getElementById('cell_' + current_row + '_' + index)) === '#c9b458') {
-        wordle_bank = wordle_bank.filter(word => word.includes(letter) && word.split('')[index] !== letter)
+        original_words = original_words.filter(word => word.includes(letter) && word.split('')[index] !== letter)
       }
     })
     current_row += 1;
     current_guess = [];
-    console.log("number of possible answers: ", wordle_bank.length);
-    console.log("possible answers left: ", wordle_bank);
+    console.log("number of possible answers: ", original_words.length);
+    console.log("possible answers left: ", original_words);
     fillPossibleAnswers();
+  }
+
+  function submitData()  {
+    for (let row = 0; row < 6; row++) {
+      for (let col = 0; col < 5; col++) {
+        let letter = document.getElementById('cell_' + row + '_' + col).innerHTML;
+        let color = document.getElementById('cell_' + row + '_' + col).innerHTML;
+      }
+    }
+
+    [].forEach.call(cells, c => {
+      c.addEventListener("click", (cellEv) => {
+        changeColor(cellEv.target)
+      })
+    });
+
+    let claim = {};
+    let fd = new FormData(claim_form);
+    fd.forEach( (v,k) => {claim[k] = v;});
+    console.log(JSON.stringify(claim));
+
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(claim),
+      headers: { 'Content-Type': 'application/json' }
+    }
+
+    fetch('/api', options)
+    .then(res => res.json())
+    .then(res => updatePage(res.id, res.claimFromWho, res.dueDate, res.claimAmount))
+    .catch(err => console.error(err));
   }
 
   function getCellHex(cell) {
     let cell_RGB = window.getComputedStyle(cell, "").getPropertyValue("background-color");
+    console.log(cell_RGB);
     return `#${cell_RGB.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n => parseInt(n, 10).toString(16).padStart(2, '0')).join('')}`;
   }
 
@@ -77,13 +109,13 @@ window.onload = () => {
     let list = document.getElementById("possible_answers");
     list.innerHTML = '';
     let num_poss = document.getElementById("possible_answers_num");
-    num_poss.innerHTML = ": " + wordle_bank.length;
-    if (wordle_bank.length === 0) {
+    num_poss.innerHTML = ": " + original_words.length;
+    if (original_words.length === 0) {
       let li = document.createElement("li");
       li.innerHTML = "No possible answers remain. Please refresh the page.";
       list.appendChild(li);
     } else {
-      wordle_bank.forEach(word => {
+      original_words.forEach(word => {
         let li = document.createElement("li");
         li.innerHTML = word;
         list.appendChild(li);

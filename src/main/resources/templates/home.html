@@ -76,7 +76,7 @@
     <div class="word_list hidden">
         <h2>Possible Answers<span id="possible_answers_num"></span></h2>
         <ul id="possible_answers">
-
+            <li th:each="word : ${words}" th:text="${word}">word</li>
         </ul>
     </div>
 </main>

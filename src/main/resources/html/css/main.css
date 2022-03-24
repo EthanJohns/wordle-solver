@@ -78,7 +78,6 @@ main {
     max-height: 50vh;
     border-radius: 3px;
     width: 7em;
-    display: flex;
     margin-left: 4em;
 }
 
