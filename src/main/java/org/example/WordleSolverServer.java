@@ -69,7 +69,6 @@ public class WordleSolverServer {
 
     private static void apiRoutes() {
         wordSession = new WordSession();
-        get("/api", context -> wordSession.getWords(context));
         put("/api", context -> wordSession.putWords(context));
     }
 

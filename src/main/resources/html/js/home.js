@@ -26,8 +26,7 @@ window.onload = () => {
       } else if (key === 'Enter') {
         if (current_guess.length === 5) {
           // runResults();
-          submitData();
-          fillPossibleAnswers();
+          submitData().then(data => fillPossibleAnswers(data));
         }
       } else if (key === 'Backspace') {
         current_guess.pop()
@@ -66,7 +65,7 @@ window.onload = () => {
     current_guess = [];
     console.log("number of possible answers: ", wordle_bank.length);
     console.log("possible answers left: ", wordle_bank);
-    fillPossibleAnswers();
+    // fillPossibleAnswers();
   }
 
   function getCellRGB(cell) {
@@ -74,7 +73,7 @@ window.onload = () => {
     return cell_RGB;
   }
 
-  function submitData()  {
+  async function submitData()  {
 
     let letters = [];
 
@@ -95,7 +94,7 @@ window.onload = () => {
     }
 
     current_row++;
-    console.log(JSON.stringify(letters));
+    // console.log(JSON.stringify(letters));
 
     const options = {
       method: 'PUT',
@@ -103,35 +102,54 @@ window.onload = () => {
       body: JSON.stringify(letters)
     }
 
-    fetch('/api', options)
+    let response = await fetch('/api', options)
     .catch(err => console.error(err));
+    const data = await response.text();
+
+    console.log('data: ' + data);
+
+    return data;
   }
 
-  function fillPossibleAnswers() {
-    const options = {
-      method: 'GET',
-    }
-    let words;
+  function fillPossibleAnswers(data) {
 
-    fetch('/api', options)
-    .then(data => words = data)
+    // console.log('data: ' + data);
+    console.log('data length: ' + data.length);
 
     let list = document.getElementById("possible_answers");
     list.innerHTML = '';
 
     let num_poss = document.getElementById("possible_answers_num");
-    num_poss.innerHTML = ": " + words.length;
-    if (words.length === 0) {
+    num_poss.innerHTML = ": " + data.length;
+    if (data.length === 0) {
       let li = document.createElement("li");
       li.innerHTML = "No possible answers remain. Please refresh the page.";
       list.appendChild(li);
     } else {
-      words.forEach(word => {
+      data.forEach(word => {
         let li = document.createElement("li");
         li.innerHTML = word;
         list.appendChild(li);
       })
     }
+
+
+    // let list = document.getElementById("possible_answers");
+    // list.innerHTML = '';
+    //
+    // let num_poss = document.getElementById("possible_answers_num");
+    // num_poss.innerHTML = ": " + words.length;
+    // if (words.length === 0) {
+    //   let li = document.createElement("li");
+    //   li.innerHTML = "No possible answers remain. Please refresh the page.";
+    //   list.appendChild(li);
+    // } else {
+    //   words.forEach(word => {
+    //     let li = document.createElement("li");
+    //     li.innerHTML = word;
+    //     list.appendChild(li);
+    //   })
+    // }
   }
 
   function fillPossibleAnswersOld() {
